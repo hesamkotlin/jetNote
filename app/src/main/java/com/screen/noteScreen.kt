@@ -19,10 +19,15 @@ import androidx.compose.ui.unit.dp
 import com.components.noteButton
 import com.components.noteInputText
 import com.example.jetnote.R
+import com.model.Note
 
 @ExperimentalComposeUiApi
 @Composable
-fun noteScreen() {
+fun noteScreen(
+    notes: List<Note>,
+    onAddNote: (Note) -> Unit,
+    onRemoveNote: (Note) -> Unit
+) {
     var title by remember {
         mutableStateOf("")
     }
@@ -51,10 +56,16 @@ fun noteScreen() {
             noteInputText(
                 text = description,
                 label = "add a note",
-                onTextChange = { if (it.all { char -> char.isLetter() || char.isWhitespace() }) description = it},
+                onTextChange = {
+                    if (it.all { char -> char.isLetter() || char.isWhitespace() }) description = it
+                },
                 modifier = Modifier.padding(top = 9.dp, bottom = 8.dp)
             )
-            noteButton(text = "save", onClick = { /*TODO*/ })
+            noteButton(text = "save", onClick = {
+                if (title.isNotEmpty() && description.isNotEmpty())
+                    title = ""
+                description = ""
+            })
         }
     }
 }
@@ -63,5 +74,5 @@ fun noteScreen() {
 @Preview(showBackground = true)
 @Composable
 fun notesScreenPreview() {
-    noteScreen()
+    noteScreen(notes = emptyList(), onAddNote = {}, onRemoveNote = {})
 }  

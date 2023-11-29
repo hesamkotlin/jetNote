@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    noteScreen()
+                    noteScreen(notes = emptyList(), onAddNote = {}, onRemoveNote = {})
                 }
             }
         }
@@ -36,6 +36,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     JetNoteTheme {
-        
+
     }
 }

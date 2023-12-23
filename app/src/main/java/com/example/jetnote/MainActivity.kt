@@ -22,7 +22,9 @@ import com.example.jetnote.ui.theme.JetNoteTheme
 import com.model.Note
 import com.screen.NoteViewModel
 import com.screen.noteScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

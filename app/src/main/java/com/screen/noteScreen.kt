@@ -28,6 +28,7 @@ import com.components.noteInputText
 import com.data.NotesDataSource
 import com.example.jetnote.R
 import com.model.Note
+import com.util.date.formatDate
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -112,7 +113,7 @@ fun noteRow(
             Text(text = note.title, style = MaterialTheme.typography.subtitle2)
             Text(text = note.description, style = MaterialTheme.typography.subtitle1)
             Text(
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+                text = formatDate(note.entryDate.time),
                 style = MaterialTheme.typography.caption
             )
         }
